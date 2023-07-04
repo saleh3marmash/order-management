@@ -2,15 +2,22 @@ package com.assignment2.assignment2.product;
 
 import java.math.BigDecimal;
 
+import com.assignment2.assignment2.product_order.Product_Order;
+import com.assignment2.assignment2.stock.Stock;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table
+@Embeddable
 public class Product {
     public Product(){
     }
@@ -28,6 +35,11 @@ public class Product {
     @Column(columnDefinition = "DECIMAL(10,2)")
     BigDecimal vat;
     boolean stockable;
+
+    @ElementCollection
+    Stock stock;
+    @ElementCollection
+    Product_Order product_order;
     public Product(int id, String slug, String name, String reference, BigDecimal price, BigDecimal vat, boolean stockable) {
         this.id = id;
         this.slug = slug;

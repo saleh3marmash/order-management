@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.assignment2.assignment2.product.Product;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Service

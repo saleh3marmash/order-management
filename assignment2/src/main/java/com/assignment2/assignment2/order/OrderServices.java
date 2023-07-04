@@ -1,49 +1,39 @@
-package com.assignment2.assignment2.product;
+package com.assignment2.assignment2.order;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.assignment2.assignment2.product.Product;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Service
 @SpringBootApplication
-public class ProductServices {
-    private final ProductRegistry productRegistry;
+public class OrderServices {
+    private final OrderRegistry orderRegistry;
 
     @Autowired
-    public ProductServices(ProductRegistry productRegistry) {
-        this.productRegistry = productRegistry;
+    public OrderServices(OrderRegistry orderRegistry) {
+        this.orderRegistry = orderRegistry;
     }
 
-    public List<Product> getProducts() {
-        // get all products
-        return productRegistry.findAll();
+    public List<Order> getOrders() {
+        // get all orders
+        return orderRegistry.findAll();
     }
 
-    public void addProduct(Product product) {
+    public void addOrder(Order order) {
         // add if info is right (try and catch before checks)
-        productRegistry.save(product);
+        orderRegistry.save(order);
     }
 
-    public void deleteProduct(int id) {
-            productRegistry.deleteById(id);
+    public void deleteOrder(int id) {
+            orderRegistry.deleteById(id);
     }
 
-    public Optional<Product> getProductById(int id) {
+    public Optional<Order> getOrderById(int id) {
         //find by id if exists
-        Optional<Product> product = productRegistry.findById(id);
-        return product;
+        Optional<Order> order = orderRegistry.findById(id);
+        return order;
     }
 
-    public void changeName(int id, String name) {
-        Optional<Product> optionalProduct = productRegistry.findById(id);
-        Product product = optionalProduct.orElse(null);
-         if (product != null) {
-             product.setName(name);
-             productRegistry.save(product);
-         }
-    }
 }
