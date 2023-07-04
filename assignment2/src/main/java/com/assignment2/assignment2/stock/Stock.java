@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 @Entity
 @Table
 public class Stock {
@@ -24,15 +25,15 @@ public class Stock {
     
     int quantity;
     @Column(name = "date_time")
-    LocalDateTime updateAt;
+    LocalDateTime updateAt= LocalDateTime.now();;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productId", referencedColumnName = "id",nullable = false)
+    @JoinColumn(name = "productId", referencedColumnName = "id")
     Product product;
-    
-    public Stock(int id, int productId, int quantity) {
+  
+    public Stock(int id, Product product, int quantity) {
         this.id = id;
+        this.product=product;
         this.quantity = quantity;
-        this.updateAt = LocalDateTime.now();
     }
     public int getId() {
         return id;
@@ -51,5 +52,11 @@ public class Stock {
     }
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
+    }
+    public Product getProduct() {
+        return product;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

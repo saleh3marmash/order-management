@@ -4,12 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.assignment2.assignment2.order.Orders;
-import com.assignment2.assignment2.stock.Stock;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +18,13 @@ import jakarta.persistence.Table;
 public class Customer {
     public Customer(){
     }
-     @Id
+     public List<Orders> getOrder() {
+        return order;
+    }
+    public void setOrder(List<Orders> order) {
+        this.order = order;
+    }
+    @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     @Column(columnDefinition = "TINYTEXT")

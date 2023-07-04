@@ -16,6 +16,12 @@ import java.util.List;
 public class Product {
     public Product(){
     }
+    public List<Stock> getStock() {
+        return stock;
+    }
+    public void setStock(List<Stock> stock) {
+        this.stock = stock;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
