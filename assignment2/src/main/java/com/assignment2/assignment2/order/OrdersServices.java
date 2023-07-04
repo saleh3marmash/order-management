@@ -8,31 +8,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Service
 @SpringBootApplication
-public class OrderServices {
-    private final OrderRegistry orderRegistry;
+public class OrdersServices {
+    private final OrdersRegistry orderRegistry;
 
     @Autowired
-    public OrderServices(OrderRegistry orderRegistry) {
+    public OrdersServices(OrdersRegistry orderRegistry) {
         this.orderRegistry = orderRegistry;
     }
 
-    public List<Order> getOrders() {
+    public List<Orders> getOrderss() {
         // get all orders
         return orderRegistry.findAll();
     }
 
-    public void addOrder(Order order) {
+    public void addOrders(Orders order) {
         // add if info is right (try and catch before checks)
         orderRegistry.save(order);
     }
 
-    public void deleteOrder(int id) {
+    public void deleteOrders(int id) {
             orderRegistry.deleteById(id);
     }
 
-    public Optional<Order> getOrderById(int id) {
+    public Optional<Orders> getOrdersById(int id) {
         //find by id if exists
-        Optional<Order> order = orderRegistry.findById(id);
+        Optional<Orders> order = orderRegistry.findById(id);
         return order;
     }
 

@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 @Configuration
 public class StockConfig {
-    @Bean
-    CommandLineRunner commandLineRunner(StockRegistry stockRegistry){
-        return args -> {
-                Stock stock1=new Stock(0,0,100,LocalDateTime.now());
-                stockRegistry.saveAll(List.of(stock1));
-        };
-    }
+    //@Bean
+    // CommandLineRunner commandLineRunner(StockRegistry stockRegistry){
+    //     return args -> {
+    //             Stock stock1=new Stock(0,0,100,LocalDateTime.now());
+    //             stockRegistry.saveAll(List.of(stock1));
+    //     };
+    // }
 }

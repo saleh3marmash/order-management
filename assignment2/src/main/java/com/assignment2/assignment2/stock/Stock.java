@@ -4,13 +4,14 @@ import java.time.LocalDateTime;
 
 import com.assignment2.assignment2.product.Product;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 @Entity
 @Table
@@ -24,14 +25,14 @@ public class Stock {
     int quantity;
     @Column(name = "date_time")
     LocalDateTime updateAt;
-    @OneToOne(targetEntity=Product.class)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId", referencedColumnName = "id",nullable = false)
     Product product;
     
-    public Stock(int id, int productId, int quantity, LocalDateTime updateAt) {
+    public Stock(int id, int productId, int quantity) {
         this.id = id;
         this.quantity = quantity;
-        this.updateAt = updateAt;
+        this.updateAt = LocalDateTime.now();
     }
     public int getId() {
         return id;

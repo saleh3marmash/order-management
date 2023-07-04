@@ -17,31 +17,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 @SpringBootApplication
-public class OrderController {
-     private final OrderServices orderServices;
+public class OrdersController {
+     private final OrdersServices orderServices;
      @Autowired
-    public OrderController(OrderServices orderServices) {
+    public OrdersController(OrdersServices orderServices) {
         this.orderServices = orderServices;
     }
-     @GetMapping("api/getOrders")
-    public List<Order> getOrders() {
-        return orderServices.getOrders();
+     @GetMapping("api/getOrderss")
+    public List<Orders> getOrderss() {
+        return orderServices.getOrderss();
     }
-    @PostMapping("api/addOrder")
-    public String addOrder(@RequestBody Order order) {
-            orderServices.addOrder(order);
-            return ("Added Order Successfully");
+    @PostMapping("api/addOrders")
+    public String addOrders(@RequestBody Orders order) {
+            orderServices.addOrders(order);
+            return ("Added Orders Successfully");
 }
-@GetMapping("api/getOrder/{id}")
-    public Optional<Order> getOrderById(@PathVariable("id") int id) {
-        return orderServices.getOrderById(id);
+@GetMapping("api/getOrders/{id}")
+    public Optional<Orders> getOrdersById(@PathVariable("id") int id) {
+        return orderServices.getOrdersById(id);
     }
     
-    @DeleteMapping("api/deleteOrder/{id}")
-    public String deleteOrder(@PathVariable("id") int id) {
+    @DeleteMapping("api/deleteOrders/{id}")
+    public String deleteOrders(@PathVariable("id") int id) {
         try {
-            orderServices.deleteOrder(id);
-            return "Order deleted successfully";
+            orderServices.deleteOrders(id);
+            return "Orders deleted successfully";
         } catch (Exception e) {
             return "There was an error deleting that order";
         }

@@ -1,8 +1,11 @@
 package com.assignment2.assignment2.customer;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import com.assignment2.assignment2.order.Order;
+import com.assignment2.assignment2.order.Orders;
+import com.assignment2.assignment2.stock.Stock;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -15,7 +18,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 @Entity
 @Table
-@Embeddable
 public class Customer {
     public Customer(){
     }
@@ -27,8 +29,9 @@ public class Customer {
     @Column(columnDefinition = "TINYTEXT")
     String lastName;
     LocalDate bornAt;
-    @ElementCollection
-    Order order;
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    List<Orders> order;
     public Customer(int id, String firstName, String lastName, LocalDate bornAt) {
         this.id = id;
         this.firstName = firstName;
