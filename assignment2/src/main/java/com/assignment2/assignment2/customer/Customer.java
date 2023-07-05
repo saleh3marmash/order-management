@@ -16,14 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Customer {
-    public Customer(){
-    }
-     public List<Orders> getOrder() {
-        return order;
-    }
-    public void setOrder(List<Orders> order) {
-        this.order = order;
-    }
+    
     @Id
      @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
@@ -64,5 +57,13 @@ public class Customer {
     }
     public void setBornAt(LocalDate bornAt) {
         this.bornAt = bornAt;
+    }
+    public Customer(){
+    }
+     public List<Orders> getOrder() {
+        return order;
+    }
+    public void setOrder(List<Orders> order) {
+        this.order = order;
     }
 }

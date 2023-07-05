@@ -20,14 +20,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Orders {
-    public Orders(){
-    }
-    public Customer getCustomer() {
-        return customer;
-    }
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
@@ -60,5 +53,13 @@ public class Orders {
     }
     public void setProduct_order(List<Product_Order> product_order) {
         this.product_order = product_order;
+    }
+    public Orders(){
+    }
+    public Customer getCustomer() {
+        return customer;
+    }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
