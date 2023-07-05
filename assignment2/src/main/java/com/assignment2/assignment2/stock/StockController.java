@@ -36,8 +36,8 @@ public class StockController {
     public Optional<Stock> getStockById(@PathVariable("id") int id) {
         return stockServices.getStockById(id);
     }
-    @PutMapping("api/changeStockName/{id}/{quantity}")
-    public String changeName(@PathVariable("id") int id, @PathVariable("quantity") int quantity) {
+    @PutMapping("api/changeStockQuantity/{id}/{quantity}")
+    public String changeQuantity(@PathVariable("id") int id, @PathVariable("quantity") int quantity) {
         try {
             stockServices.changeQuantity(id, quantity);
             return ("Name changed Successfully");
