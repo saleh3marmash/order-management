@@ -23,9 +23,9 @@ public class OrdersController {
     public OrdersController(OrdersServices orderServices) {
         this.orderServices = orderServices;
     }
-     @GetMapping("api/getOrderss")
-    public List<Orders> getOrderss() {
-        return orderServices.getOrderss();
+     @GetMapping("api/getOrders")
+    public List<Orders> getOrders() {
+        return orderServices.getOrders();
     }
     @PostMapping("api/addOrders")
     public String addOrders(@RequestBody Orders order) {

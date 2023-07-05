@@ -1,6 +1,9 @@
 package com.assignment2.assignment2.product;
 
 import java.math.BigDecimal;
+
+import com.assignment2.assignment2.order.Orders;
+import com.assignment2.assignment2.product_order.Product_Order;
 import com.assignment2.assignment2.stock.Stock;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
@@ -8,6 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -39,6 +45,8 @@ public class Product {
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     List<Stock> stock;
+    @OneToMany(mappedBy = "product")
+    List<Product_Order> product_order;
     public Product(int id, String slug, String name, String reference, BigDecimal price, BigDecimal vat, boolean stockable) {
         this.id = id;
         this.slug = slug;
@@ -91,6 +99,12 @@ public class Product {
     }
     public void setVat(BigDecimal vat) {
         this.vat = vat;
+    }
+    public List<Product_Order> getProduct_order() {
+        return product_order;
+    }
+    public void setProduct_order(List<Product_Order> product_order) {
+        this.product_order = product_order;
     }
     
 }

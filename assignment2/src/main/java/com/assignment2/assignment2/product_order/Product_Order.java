@@ -1,29 +1,54 @@
 package com.assignment2.assignment2.product_order;
+
+import com.assignment2.assignment2.product.Product;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import com.assignment2.assignment2.order.Orders;
+    @Entity
+    @Table
 public class Product_Order {
-    int productId;
-    int orderId;
+     @Id
+    int id;
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    Product product;
+    @JoinColumn(name = "orderId")
+    @ManyToOne
+    Orders orders;
     int quantity;
+    @Column(columnDefinition = "DECIMAL(10,2)")
     int price;
+    @Column(columnDefinition = "DECIMAL(10,2)")
     int vat;
-    public Product_Order(int productId, int orderId, int quantity, int price, int vat) {
-        this.productId = productId;
-        this.orderId = orderId;
+    public Product_Order( int quantity, int price, int vat) {
+       
         this.quantity = quantity;
         this.price = price;
         this.vat = vat;
     }
-    public int getProductId() {
-        return productId;
-    }
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-    public int getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
+    public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public Product getProduct() {
+            return product;
+        }
+
+        public void setProduct(Product product) {
+            this.product = product;
+        }
+
+   
+    
     public int getQuantity() {
         return quantity;
     }
@@ -41,5 +66,11 @@ public class Product_Order {
     }
     public void setVat(int vat) {
         this.vat = vat;
+    }
+    public Orders getOrder() {
+        return orders;
+    }
+    public void setOrder(Orders orders) {
+        this.orders = orders;
     }
 }

@@ -16,7 +16,7 @@ public class OrdersServices {
         this.orderRegistry = orderRegistry;
     }
 
-    public List<Orders> getOrderss() {
+    public List<Orders> getOrders() {
         // get all orders
         return orderRegistry.findAll();
     }
