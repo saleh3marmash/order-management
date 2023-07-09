@@ -54,4 +54,8 @@ public class CustomerController {
             return "There was an error deleting that customer";
         }
 }
+    @GetMapping
+    public String home(){
+        return "This is a web-services test project";
+    }
 }
