@@ -1,0 +1,22 @@
+version: '2'
+services:
+    myapp:
+        image: mycompany/myapp:1.0.0
+        container_name: myapp
+        depends_on:
+        - mysql
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/myapp?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+
+    mysql:
+        image: mysql:5.7.19
+        container_name: mysql
+        volumes:
+            - /home/docker/volumes/myapp/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=myapp
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8
